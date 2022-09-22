@@ -1,0 +1,10 @@
+Resources:
+  StoreInputValue:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Type: String
+      Value: "{% if environment.inputs.my_sample_input is defined %}{{ environment.inputs.my_sample_input }}{% endif %} {{ environment.inputs.my_other_sample_input}}"
+
+Outputs:
+  MyEnvParameterValue:
+    Value: !GetAtt StoreInputValue.Value
