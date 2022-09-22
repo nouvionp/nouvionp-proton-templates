@@ -3,8 +3,10 @@ schema:
     openapi: "3.0.0"
   environment_input_type: "MyEnvironmentInputType"
   types:
+
     MyEnvironmentInputType:
-      description: "Input properties for my environment"
+      title: Environment test input
+      description: Input properties for my environment
       type: object
       required:
         - my_sample_input
@@ -14,3 +16,54 @@ schema:
           type: string
           description: "This is a sample input"
           default: "hello world"
+
+    StringTests:
+      title: Tests for strings
+      description: Properties that exercise the various options for specifying string types in OpenAPI
+      type: object
+      required:
+        - simple_string
+
+      properties:
+        complex_string:
+          default: task
+          description: String param with title, description, length validation, examples
+            and default value
+          example: my example string
+          maxLength: 50
+          minLength: 1
+          title: Complex String 123
+          type: string
+
+        complex_string_array:
+          default:
+            - Hello world
+          description: String array param with title, description, min/max items validation,
+            example, and default value
+          example:
+            - hello
+            - world
+          items:
+            type: string
+          maxItems: 10
+          minItems: 1
+          title: Complex String Array 345
+          type: array
+
+        enum_string:
+          enum:
+          - choice1
+          - choice2
+          type: string
+
+        formatted_string:
+          format: date
+          type: string
+
+        simple_string:
+          type: string
+
+        string_array:
+          items:
+            type: string
+          type: array
