@@ -25,15 +25,45 @@ schema:
         - simple_string
 
       properties:
+        simple_string:
+          description: Simple string input (Text input) - Supported ✓
+          type: string
+
+        enum_string:
+          description: Simple string input using Enums (Dropdown) - Supported ✓
+          type: string
+          enum:
+            - choice1
+            - choice2
+
+        formatted_string:
+          description: String parameter set with format = date - NOT Supported ✗
+          type: string
+          format: date
+
+        string_array:
+          description: Array of simple strings parameter (Text input) - To be tested!
+          type: array
+          items:
+            type: string
+
+        string_enums_array:
+          description: Array of simple strings parameter using enums (Dropdown) - To be tested!
+          type: array
+          items:
+            enum:
+              - choice1
+              - choice2
+
         complex_string:
-          default: task
           description: String param with title, description, length validation, examples
             and default value
+          title: Complex String 123
+          type: string
+          default: task
           example: my example string
           maxLength: 50
           minLength: 1
-          title: Complex String 123
-          type: string
 
         complex_string_array:
           default:
@@ -48,22 +78,4 @@ schema:
           maxItems: 10
           minItems: 1
           title: Complex String Array 345
-          type: array
-
-        enum_string:
-          enum:
-          - choice1
-          - choice2
-          type: string
-
-        formatted_string:
-          format: date
-          type: string
-
-        simple_string:
-          type: string
-
-        string_array:
-          items:
-            type: string
           type: array
