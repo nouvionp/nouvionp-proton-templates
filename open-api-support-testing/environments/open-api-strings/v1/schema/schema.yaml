@@ -26,56 +26,37 @@ schema:
 
       properties:
         simple_string:
-          description: Simple string input (Text input) - Supported ✓
-          type: string
-
-        enum_string:
-          description: Simple string input using Enums (Dropdown) - Supported ✓
-          type: string
-          enum:
-            - choice1
-            - choice2
-
-        formatted_string:
-          description: String parameter set with format = date - NOT Supported ✗
-          type: string
-          format: date
-
-        string_array:
-          description: Array of simple strings parameter (Text input) - To be tested!
-          type: array
-          items:
-            type: string
-
-        string_enums_array:
-          description: Array of simple strings parameter using enums (Dropdown) - NOT Supported ✗
-          type: array
-          items:
-            enum:
-              - choice1
-              - choice2
-
-        complex_string:
-          description: String param with title, description, length validation (min = 2, max = 10), examples
-            and default value
-          title: Complex String 123
+          title: A simple string parameter
+          description: String parameter with title, description, a default value, length validation (min = 2, max = 10) and an example - Supported ✓
           type: string
           default: task
           example: my example string
           maxLength: 10
           minLength: 2
 
-        complex_string_array:
-          title: Complex String Array 345
+        enum_string:
+          title: A simple string parameter using Enums
+          description: Simple string input using Enums (Dropdown) - Supported ✓
+          type: string
+          enum:
+            - String enum 1
+            - String enum 2
+
+        string_array:
+          title: String Array
+          description: String array parameter with title, description, a default value, length validation (min = 1, max = 5) and an example - Supported ✓
           type: array
           maxItems: 5
-          minItems: 2
+          minItems: 1
           default:
             - Hello world
-          description: String array param with title, description, min/max items validation (1/5),
-            example, and default value
           example:
             - hello
             - world
           items:
             type: string
+
+        formatted_string:
+          description: String parameter set with format = date - NOT Supported ✗
+          type: string
+          format: date

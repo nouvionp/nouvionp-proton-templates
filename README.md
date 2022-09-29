@@ -16,6 +16,6 @@ ada credentials update --provider=isengard --profile=default --account=$AWS_ACCO
 After saving/committing changes:
 
 ```
-tar -zcvf open-api-strings-env-template.tar.gz open-api-strings
+tar -zcvf open-api-strings-env-template.tar.gz v1
 aws s3 cp open-api-strings-env-template.tar.gz s3://$AWS_BUCKET/
 ```
