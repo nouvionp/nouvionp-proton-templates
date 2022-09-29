@@ -8,6 +8,8 @@ This is a set of templates used to test the AWS Proton console support for Open 
 
 #### TAR and Upload
 
+Example:
+
 ```
 cd open-api-support-testing/environments
 ada credentials update --provider=isengard --profile=default --account=$AWS_ACCOUNT_ID --role=Admin --once
