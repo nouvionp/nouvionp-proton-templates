@@ -1,24 +1,10 @@
 schema:
   format:
     openapi: "3.0.0"
-  environment_input_type: "MyEnvironmentInputType"
+  environment_input_type: "MyEnvironmentInputs"
   types:
-
-    MyEnvironmentInputType:
-      title: Environment test input
-      description: Input properties for my environment
-      type: object
-      required:
-        - my_sample_input
-
-      properties:
-        my_sample_input:
-          type: string
-          description: "This is a sample input"
-          default: "hello world"
-
-    StringTests:
-      title: Tests for strings
+    MyEnvironmentInputs:
+      title: Environment test inputs for Strings
       description: Properties that exercise the various options for specifying string types in OpenAPI
       type: object
       required:
