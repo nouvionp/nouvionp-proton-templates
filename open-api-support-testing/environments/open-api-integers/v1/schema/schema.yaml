@@ -5,7 +5,7 @@ schema:
   types:
     MyEnvironmentInputs:
       title: Environment test inputs for Integers
-      description: Properties that exercise the various options for specifying string types in OpenAPI
+      description: Properties that exercise the various options for specifying integer types in OpenAPI
       type: object
       required:
         - simple_integer
@@ -56,6 +56,6 @@ schema:
             type: integer
 
         formatted_Integer:
-          description: Integer parameter set with format = int64, the validation on the console is not supported though the Proton API will return an error if the input is NOT a int64 - NOT Supported ✗
-          type: string
-          format: int64
+          description: Integer parameter set with format = int8, UI will show the proper input but will NOT validate the format. Proton will validate on the backend  - NOT Supported ✗
+          type: integer
+          format: int8
