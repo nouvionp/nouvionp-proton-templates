@@ -3,7 +3,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Type: String
-      Value: "{% if environment.inputs.my_sample_input is defined %}{{ environment.inputs.my_sample_input }}{% endif %} {{ environment.inputs.simple_string}}"
+      Value: "{% if environment.inputs.my_sample_input is defined %}{{ environment.inputs.my_sample_input }}{% endif %} {{ environment.inputs.simple_integer}}"
 
 Outputs:
   MyEnvParameterValue:
