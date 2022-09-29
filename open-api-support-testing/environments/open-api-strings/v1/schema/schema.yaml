@@ -43,6 +43,6 @@ schema:
             type: string
 
         formatted_string:
-          description: String parameter set with format = date - NOT Supported ✗
+          description: String parameter set with format = date, the validation on the console is not supported though the Proton API will return an error if the input is NOT a Date - NOT Supported ✗
           type: string
           format: date
