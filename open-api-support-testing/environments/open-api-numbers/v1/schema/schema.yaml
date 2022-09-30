@@ -21,7 +21,7 @@ schema:
           minimum: 1
 
         number_multiple_of:
-          description: Number parameter with multipleOf (multipleOf: 2.5) - Supported ✓
+          description: Number parameter with multipleOf (multipleOf = 2.5) - Supported ✓
           maximum: 10
           minimum: 0
           multipleOf: 2.5
