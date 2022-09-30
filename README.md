@@ -31,3 +31,8 @@ aws s3 cp open-api-integers-env-template.tar.gz s3://$AWS_BUCKET/
 tar -zcvf open-api-numbers-env-template.tar.gz v1
 aws s3 cp open-api-numbers-env-template.tar.gz s3://$AWS_BUCKET/
 ```
+
+```
+tar -zcvf open-api-booleans-env-template.tar.gz v1
+aws s3 cp open-api-booleans-env-template.tar.gz s3://$AWS_BUCKET/
+```
