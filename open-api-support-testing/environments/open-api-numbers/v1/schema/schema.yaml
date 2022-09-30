@@ -13,12 +13,27 @@ schema:
       properties:
         simple_number:
           title: A simple number parameter
-          description: Number parameter with title, description, a default value, min/max validation (min = 2, max = 10) and an example - Supported ✓
+          description: Number parameter with title, description, a default value, min/max validation (min = 1, max = 10) and an example - Supported ✓
           type: number
           default: 1.25
           example: 8.75
           maximum: 100
           minimum: 1
+
+        number_multiple_of:
+          description: Number parameter with multipleOf (multipleOf: 2.5) - Supported ✓
+          maximum: 10
+          minimum: 0
+          multipleOf: 2.5
+          type: number
+
+        number_exclusive_min_max:
+          description: Number parameter with exclusive min/max set to true (min = 1, max = 10) - Supported ✓
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          maximum: 10
+          minimum: 0
+          type: number
 
         enum_number:
           title: A simple number parameter using Enums
@@ -59,18 +74,3 @@ schema:
           description: Number parameter set with format = double, UI will show the proper input but will NOT validate the format. Proton will validate on the backend - NOT Supported ✗
           type: number
           format: double
-
-        number_exclusive_min_max:
-          description: Number parameter with exclusive min/max - NOT Supported ✗
-          exclusiveMaximum: true
-          exclusiveMinimum: true
-          maximum: 10
-          minimum: 0
-          type: number
-
-        number_multiple_of:
-          description: Number parameter with multipleOf - NOT Supported ✗
-          maximum: 10
-          minimum: 0
-          multipleOf: 2.5
-          type: number
