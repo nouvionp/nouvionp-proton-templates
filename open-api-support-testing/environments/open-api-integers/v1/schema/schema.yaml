@@ -56,6 +56,6 @@ schema:
             type: integer
 
         formatted_Integer:
-          description: Integer parameter set with format = int8, UI will show the proper input but will NOT validate the format. Proton will validate on the backend  - NOT Supported ✗
+          description: Integer parameter set with format = int8, UI will show the proper input but will NOT validate the format. Proton will validate on the backend - NOT Supported ✗
           type: integer
           format: int8

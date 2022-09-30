@@ -1,0 +1,61 @@
+schema:
+  format:
+    openapi: "3.0.0"
+  environment_input_type: "MyEnvironmentInputs"
+  types:
+    MyEnvironmentInputs:
+      title: Environment test inputs for Numbers
+      description: Properties that exercise the various options for specifying number types in OpenAPI
+      type: object
+      required:
+        - simple_number
+
+      properties:
+        simple_number:
+          title: A simple number parameter
+          description: Number parameter with title, description, a default value, min/max validation (min = 2, max = 10) and an example - Supported ✓
+          type: number
+          default: 1.25
+          example: 8.75
+          maximum: 100
+          minimum: 1
+
+        enum_number:
+          title: A simple number parameter using Enums
+          description: Simple number input using Enums (Dropdown) - Supported ✓
+          type: number
+          enum:
+            - 1.25
+            - 8.75
+            - 10
+
+        number_array:
+          title: Number Array
+          description: Number array parameter with title, description, a default value, min/max validation (min = 10, max = 50), length validation (min = 1, max = 5) and an example - Supported ✓
+          type: array
+          maximum: 50
+          minimum: 10
+          maxItems: 5
+          minItems: 1
+          default:
+            - 5.34
+          example:
+            - 1.23
+            - 2.45
+            - 3.67
+          items:
+            type: number
+
+        number_array_min_max:
+          title: Number Array
+          description: Number with min/max validation (min = 10, max = 50) - NOT Supported ✗
+          type: array
+          maximum: 50
+          minimum: 10
+          items:
+            type: number
+
+        formatted_number:
+          description: Number parameter set with format = double, UI will show the proper input but will NOT validate the format. Proton will validate on the backend - NOT Supported ✗
+          type: number
+          format: double
