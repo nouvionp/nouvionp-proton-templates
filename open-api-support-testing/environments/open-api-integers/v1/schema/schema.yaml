@@ -20,6 +20,10 @@ schema:
           maximum: 10
           minimum: 2
 
+        simple_integer_not_required:
+          description: Optional Integer parameter - Supported ✓
+          type: integer
+
         enum_integer:
           title: A simple integer parameter using Enums
           description: Simple integer input using Enums (Dropdown) - Supported ✓

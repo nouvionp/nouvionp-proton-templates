@@ -20,6 +20,11 @@ schema:
           maximum: 100
           minimum: 1
 
+        simple_number_not_required:
+          title: An optional simple number parameter
+          description: Optional number parameter - Supported ✓
+          type: number
+
         number_multiple_of:
           description: Number parameter with multipleOf (multipleOf = 2.5) - Supported ✓
           maximum: 10

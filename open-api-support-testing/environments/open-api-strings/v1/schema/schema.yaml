@@ -20,6 +20,11 @@ schema:
           maxLength: 10
           minLength: 2
 
+        simple_string_not_required:
+          title: An optional simple string parameter
+          description: Optional string parameter - Supported ✓
+          type: string
+
         enum_string:
           title: A simple string parameter using Enums
           description: Simple string input using Enums (Dropdown) - Supported ✓
