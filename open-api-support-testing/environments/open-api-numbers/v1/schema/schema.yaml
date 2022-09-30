@@ -59,3 +59,18 @@ schema:
           description: Number parameter set with format = double, UI will show the proper input but will NOT validate the format. Proton will validate on the backend - NOT Supported ✗
           type: number
           format: double
+
+        number_exclusive_min_max:
+          description: Number parameter with exclusive min/max - NOT Supported ✗
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          maximum: 10
+          minimum: 0
+          type: number
+
+        number_multiple_of:
+          description: Number parameter with multipleOf - NOT Supported ✗
+          maximum: 10
+          minimum: 0
+          multipleOf: 2.5
+          type: number
