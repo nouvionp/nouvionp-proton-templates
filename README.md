@@ -36,3 +36,12 @@ aws s3 cp open-api-numbers-env-template.tar.gz s3://$AWS_BUCKET/
 tar -zcvf open-api-booleans-env-template.tar.gz v1
 aws s3 cp open-api-booleans-env-template.tar.gz s3://$AWS_BUCKET/
 ```
+
+```
+tar -zcvf open-api-svc-template.tar.gz v1
+aws s3 cp open-api-svc-template.tar.gz s3://$AWS_BUCKET/
+```
+
+s3://patrick-arrow-bucket/open-api-svc-template.tar.gz
+alpha-pdx-open-api-svc
+open-api-booleans-env

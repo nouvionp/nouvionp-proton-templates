@@ -1,0 +1,7 @@
+compatible_environments:
+  - open-api-booleans:1
+  - open-api-integers:1
+  - open-api-numbers:1
+  - open-api-strings:1
+supported_component_sources:
+  - DIRECTLY_DEFINED

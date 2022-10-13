@@ -1,0 +1,282 @@
+schema:
+  format:
+    openapi: "3.0.0"
+  service_input_type: "CrudServiceInput"
+  pipeline_input_type: "PipelineInputs"
+
+  types:
+    CrudServiceInput:
+      type: object
+      description: "Input properties for a Lambda backed CRUD API. When given a resource name, this input will be used to generate Create, Read, Update and Delete API methods and lambdas."
+      properties:
+        arbitrary_object:
+          type: object
+        arbitrary_object_with_prop_limits:
+          maxProperties: 10
+          minProperties: 2
+          type: object
+        dictionary_object:
+          additionalProperties:
+            type: string
+          example:
+            en: Hello!
+            fr: Bonjour!
+          type: object
+        dictionary_object_with_inline_object_values:
+          additionalProperties:
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+            type: object
+          type: object
+        dictionary_object_with_some_fixed_values:
+          additionalProperties:
+            type: string
+          properties:
+            name:
+              type: string
+          required:
+            - name
+          type: object
+        nested_inline_object:
+          properties:
+            contact_info:
+              properties:
+                uuid:
+                  format: uuid
+                  type: string
+                phone:
+                  type: string
+              type: object
+            id:
+              type: integer
+            name:
+              type: string
+          type: object
+
+        resource_name:
+          type: string
+          description: "The resource to generate a CRUD API for"
+          minLength: 1
+          maxLength: 50
+          default: "task"
+        resource_handler:
+          type: string
+          description: "The handler path to find the CRUD methods for this API"
+          minLength: 1
+          maxLength: 50
+          default: "src/api"
+        lambda_memory:
+          type: number
+          description: "The size of your Lambda functions in MB"
+          default: 512
+          minimum: 1
+          maximum: 3008
+        lambda_timeout:
+          type: number
+          description: "The timeout in seconds of your Lambda function"
+          default: 30
+          minimum: 1
+          maximum: 900
+        lambda_runtime:
+          type: string
+          description: "The runtime for your Lambda service"
+          enum: ["nodejs12.x", "python3.8", "ruby2.7", "java11", "go1.x", "dotnetcore3.1"]
+          default: "ruby2.7"
+        code_uri:
+          type: string
+          description: "The s3 link to your application"
+          minLength: 1
+          maxLength: 200
+        simple_string:
+          title: A simple string parameter
+          description: String parameter with title, description, a default value, length validation (min = 2, max = 10) and an example - Supported ✓
+          type: string
+          default: task
+          example: my example string
+          maxLength: 10
+          minLength: 2
+        string_array:
+          title: String Array
+          description: String array parameter with title, description, a default value, length validation (min = 1, max = 5) and an example - Supported ✓
+          type: array
+          maxItems: 5
+          minItems: 1
+          default:
+            - Hello world
+          example:
+            - hello
+            - world
+          items:
+            type: string
+
+        formatted_string:
+          description: String parameter set with format = date, the validation on the console is not supported though the Proton API will return an error if the input is NOT a Date - NOT Supported ✗
+          type: string
+          format: date
+
+        simple_boolean:
+          title: A simple boolean parameter
+          description: Boolean parameter with title, description, a default value, and an example - Supported ✓
+          type: boolean
+          default: true
+          example:
+            - true
+            - false
+
+        enum_boolean:
+          title: A simple boolean parameter using Enums
+          description: Simple boolean input using Enums (Dropdown) - Supported ✓
+          type: boolean
+          enum:
+            - true
+            - false
+        boolean_array:
+          title: Boolean Array
+          description: Boolean array parameter with title, description, a default value, items count validation (min = 1, max = 5) and an example - Supported ✓
+          type: array
+          maxItems: 5
+          minItems: 1
+          default:
+            - true
+          example:
+            - true
+            - false
+          items:
+            type: boolean
+
+        simple_number:
+          title: A simple number parameter
+          description: Number parameter with title, description, a default value, min/max validation (min = 1, max = 10) and an example - Supported ✓
+          type: number
+          default: 1.25
+          example: 8.75
+          maximum: 100
+          minimum: 1
+
+        simple_number_not_required:
+          title: An optional simple number parameter
+          description: Optional number parameter - Supported ✓
+          type: number
+
+        number_multiple_of:
+          description: Number parameter with multipleOf (multipleOf = 2.5) - Supported ✓
+          maximum: 10
+          minimum: 0
+          multipleOf: 2.5
+          type: number
+
+        number_exclusive_min_max:
+          description: Number parameter with exclusive min/max set to true (min = 1, max = 10) - Supported ✓
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          maximum: 10
+          minimum: 0
+          type: number
+
+        enum_number:
+          title: A simple number parameter using Enums
+          description: Simple number input using Enums (Dropdown) - Supported ✓
+          type: number
+          enum:
+            - 1.25
+            - 8.75
+            - 10
+
+        number_array:
+          title: Number Array
+          description: Number array parameter with title, description, a default value, min/max validation (min = 10, max = 50), length validation (min = 1, max = 5) and an example - Supported ✓
+          type: array
+          maximum: 50
+          minimum: 10
+          maxItems: 5
+          minItems: 1
+          default:
+            - 5.34
+          example:
+            - 1.23
+            - 2.45
+            - 3.67
+          items:
+            type: number
+
+        number_array_min_max:
+          title: Number Array
+          description: Number with min/max validation (min = 10, max = 50) - NOT Supported ✗
+          type: array
+          maximum: 50
+          minimum: 10
+          items:
+            type: number
+
+        formatted_number:
+          description: Number parameter set with format = double, UI will show the proper input but will NOT validate the format. Proton will validate on the backend - NOT Supported ✗
+          type: number
+          format: double
+
+        simple_integer:
+          title: A simple integer parameter
+          description: Integer parameter with title, description, a default value, min/max validation (min = 2, max = 10) and an example - Supported ✓
+          type: integer
+          default: 5
+          example: 2
+          maximum: 10
+          minimum: 2
+
+        simple_integer_not_required:
+          description: Optional Integer parameter - Supported ✓
+          type: integer
+
+        enum_integer:
+          title: A simple integer parameter using Enums
+          description: Simple integer input using Enums (Dropdown) - Supported ✓
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+
+        integer_array:
+          title: Integer Array
+          description: Integer array parameter with title, description, a default value, min/max validation (min = 10, max = 50), length validation (min = 1, max = 5) and an example - Supported ✓
+          type: array
+          maximum: 50
+          minimum: 10
+          maxItems: 5
+          minItems: 1
+          default:
+            - 10
+          example:
+            - 1
+            - 2
+            - 3
+          items:
+            type: integer
+
+        integer_array_min_max:
+          title: Integer Array
+          description: Integer with min/max validation (min = 10, max = 50) - NOT Supported ✗
+          type: array
+          maximum: 50
+          minimum: 10
+          items:
+            type: integer
+
+        formatted_integer:
+          description: Integer parameter set with format = int8, UI will show the proper input but will NOT validate the format. Proton will validate on the backend - NOT Supported ✗
+          type: integer
+          format: int8
+
+
+    PipelineInputs:
+      type: object
+      description: "Pipeline input properties"
+      properties:
+        packaging_command:
+          type: string
+          description: "The commands which packages your code into a file called function.zip"
+          default: "make publish"
+          minLength: 1
+          maxLength: 200
